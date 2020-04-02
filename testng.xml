@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Screenshots">
+    <test name="Take Baseline Screenshot">
+        <parameter name="test" value="Balance"></parameter>
+        <classes>
+        <class name="TakeScreenshots">
+        <methods>
+            <include name="Motor"></include>
+        </methods>
+        </class>
+        </classes>
+    </test>
+    <test name="Take Uturn Screenshot">
+        <parameter name="test" value="Uturn"></parameter>
+        <classes>
+            <class name="TakeScreenshots">
+                <methods>
+                    <include name="Motor"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
