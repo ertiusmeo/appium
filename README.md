@@ -8,6 +8,6 @@ Before running tests, change the following capabilities in BasePage file:
 - platformVersion
 
 
-To tun tests:
+To run tests:
 - Right click on "Tests"
 - select Run "Tests"
