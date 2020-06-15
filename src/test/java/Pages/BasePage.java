@@ -3,37 +3,37 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 public abstract class BasePage
 {
     public static AndroidDriver driver;
     public static WebDriverWait wait;
 
-    public boolean res=true;
-    public List<String> msg = new ArrayList<>();
+    public static boolean res=true;
+    public static String random_string;
+    public static String msg ="";
 
-    public void setup () throws MalformedURLException
+    @BeforeMethod
+    public void setup () throws Exception
     {
-
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("deviceName", "Galaxy A40");
-        caps.setCapability("udid", "R58M823HXXM"); //DeviceId from "adb devices" command
+        caps.setCapability("deviceName", "Galaxy S10+");
+        caps.setCapability("udid", "R58N20ASJFR"); //DeviceId from "adb devices" command
         caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "9.0");
+        caps.setCapability("platformVersion", "10.0");
         caps.setCapability("skipUnlock","false");
-        caps.setCapability("appPackage", "com.roche.rpm.artios.autoQa");
-        caps.setCapability("appActivity","com.roche.rpm.ohand.initialization.InitializationActivity");
+        caps.setCapability("appPackage", "com.google.android.keep");
+        caps.setCapability("appActivity","com.google.android.apps.keep.ui.activities.BrowseActivity");
         caps.setCapability("noReset","true");
         caps.setCapability("automationName","UiAutomator1");
         caps.setCapability("autoLaunch", "true");
         caps.setCapability(MobileCapabilityType.TAKES_SCREENSHOT,true);
-        caps.setCapability("adbExecTimeout", 500000);
-
+        caps.setCapability("adbExecTimeout", 10000);
+        random_string= UUID.randomUUID().toString();
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),caps);
         wait = new WebDriverWait(driver, 10);
     }

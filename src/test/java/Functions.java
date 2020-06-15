@@ -1,16 +1,43 @@
 import Pages.BasePage;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
+import Pages.Dashboard;
+import Pages.Note;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Functions
 {
-
-
-    public static void swipeUpDown(int fromY, int toY) {
-
-       int x=620;
-        (new TouchAction(BasePage.driver)).press(PointOption.point(x,fromY)).moveTo(PointOption.point(x,toY)).release().perform();
-
+    public static void AddNote(String title)
+    {
+        Dashboard.clickAddNote();
+        Note.enterTitle(title);
+        Note.enterNote("abcde");
+        Note.clickBack();
     }
 
+    public static boolean IsElementDisplayed(By by)
+    {
+        try
+        {
+            BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            return true;
+        }
+        catch (TimeoutException ex)
+        {
+            BasePage.msg=by.toString() + " is not displayed";
+            return false;
+        }
+    }
+
+    public static String GetElementText(By by)
+    {
+        try
+        {
+            return BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText();
+        }
+        catch (TimeoutException ex)
+        {
+            return null;
+        }
+    }
 }

@@ -23,12 +23,6 @@
     </build>
 <dependencies>
     <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>3.141.59</version>
-    </dependency>
-
-    <dependency>
         <groupId>io.appium</groupId>
         <artifactId>java-client</artifactId>
         <version>7.3.0</version>
@@ -41,23 +35,7 @@
         <scope>test</scope>
     </dependency>
 
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.8.2</version>
-        <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>com.testautomationguru.ocular</groupId>
-        <artifactId>ocular</artifactId>
-        <version>1.0.0.Alpha</version>
-    </dependency>
-
-
 
 </dependencies>
-
-
 
 </project>

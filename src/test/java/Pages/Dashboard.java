@@ -5,26 +5,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Dashboard
 {
-    public static By main_screen = By.xpath("/hierarchy/android.widget.FrameLayout");
-    public static By btnCalendar = By.id("com.roche.rpm.artios.autoQa:id/action_date_range");
-    public static By btnMainScreen = By.id("com.roche.rpm.artios.autoQa:id/action_home");
-    public static By btnDailyActivities = By.xpath("//*[@text='Start Daily Activities' or @text='Continue Daily Activities']");
-    public static By btnWalkingTest = By.xpath("/hierarchy/android.widget.FrameLayout");
-    public static By btnMenu = By.xpath("//android.widget.ImageView[@content-desc=\"More options\"]");
+    public static By txtSearchBar = By.id("com.google.android.keep:id/open_search_bar_text_view");
+    public static By btnAddNote = By.id("com.google.android.keep:id/new_note_button");
+    public static By msgNoResult= By.xpath("//android.widget.TextView[@text=\"No matching notes\"]");
 
-    public static void tapMenu()
+
+    public static void searchNote(String text)
     {
-        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(btnMenu)).click();
+        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(txtSearchBar)).sendKeys(text);
     }
 
-    public static void tapDailyActivities()
+    public static void clickAddNote()
     {
-        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(btnDailyActivities)).click();
+        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(btnAddNote)).click();
     }
 
-    public static void tapWalkingTest()
-    {
-        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(btnDailyActivities)).click();
-    }
 
+    public static void openNote(String title)
+    {
+        searchNote(title);
+        String xpath="//android.widget.TextView[@resource-id=\"com.google.android.keep:id/index_note_title\" and @text=\""+title+"\"]";
+        BasePage.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+    }
 }
